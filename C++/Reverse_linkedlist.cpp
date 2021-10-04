@@ -25,21 +25,21 @@ struct LinkedList {
     /* Function to reverse the linked list */
     void reverse()
     {
-        // Initialize current, previous and
+       // Initialize current, previous and
         // next pointers
         Node* current = head;
-        Node *prev = NULL, *next = NULL;
+        Node *prev = NULL, *prev2 = NULL;
  
+        // Now using sliding pointer
         while (current != NULL) {
-            // Store next
-            next = current->next;
- 
-            // Reverse current node's pointer
-            current->next = prev;
- 
-            // Move pointers one position ahead.
+            // prev and prev2 are the following pointer of current pointer
+            prev2 = prev ;
             prev = current;
-            current = next;
+           // move current to its next
+            current = current->next ;
+         
+            //assigning prev next to prev2 which was just before prev.
+            prev->next= prev2;
         }
         head = prev;
     }
